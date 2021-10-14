@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>EditableGrid - Minimal demo - Creating grid in Javascript</title>
+		
+		<script src="js/editablegrid.js"></script>
+		<script src="js/editablegrid_renderers.js" ></script>
+		<script src="js/editablegrid_editors.js" ></script>
+		<script src="js/editablegrid_validators.js" ></script>
+		<script src="js/editablegrid_utils.js" ></script>
+		<script src="js/editablegrid_charts.js" ></script>
+		<link rel="stylesheet" href="css/editablegrid.css" type="text/css" media="screen">
+		
+		<style>
+			body { font-family:'lucida grande', tahoma, verdana, arial, sans-serif; font-size:11px; }
+			h1 { font-size: 15px; }
+			a { color: #548dc4; text-decoration: none; }
+			a:hover { text-decoration: underline; }
+			table.testgrid { border-collapse: collapse; border: 1px solid #CCB; width: 800px; }
+			table.testgrid td, table.testgrid th { padding: 5px; border: 1px solid #E0E0E0; }
+			table.testgrid th { background: #E5E5E5; text-align: left; }
+			input.invalid { background: red; color: #FDFDFD; }
+		</style>
+		
+		<script>
+			window.onload = function() {
+
+				// this approach is interesting if you need to dynamically create data in Javascript 
+				var metadata = [];
+				metadata.push({ name: "name", label: "NAME", datatype: "string", editable: true});
+				metadata.push({ name: "firstname", label:"FIRSTNAME", datatype: "string", editable: true});
+				metadata.push({ name: "age", label: "AGE", datatype: "integer", editable: true});
+				metadata.push({ name: "height", label: "HEIGHT", datatype: "double(m,2)", editable: true});
+				metadata.push({ name: "country", label: "COUNTRY", datatype: "string", editable: true});
+				metadata.push({ name: "email", label: "EMAIL", datatype: "email", editable: true});
+				metadata.push({ name: "freelance", label: "FREELANCE", datatype: "boolean", editable: true});
+				metadata.push({ name: "lastvisit", label: "LAST VISIT", datatype: "date", editable: true});
+				metadata.push({ name: "n1", label: "N1", datatype: "integer", editable: true});
+				metadata.push({ name: "n2", label: "N2", datatype: "integer", editable: true});
+				metadata.push({ name: "n3", label: "N3", datatype: "integer", editable: true});
+				metadata.push({ name: "n4", label: "N4", datatype: "integer", editable: true});
+				metadata.push({ name: "n5", label: "N5", datatype: "integer", editable: true});
+				metadata.push({ name: "n6", label: "N6", datatype: "integer", editable: true});
+				metadata.push({ name: "n7", label: "N7", datatype: "integer", editable: true});
+				metadata.push({ name: "n8", label: "N8", datatype: "integer", editable: true});
+				metadata.push({ name: "n9", label: "N9", datatype: "integer", editable: true});
+				metadata.push({ name: "n10", label: "N10", datatype: "integer", editable: true});
+				metadata.push({ name: "n11", label: "N11", datatype: "integer", editable: true});
+				metadata.push({ name: "n12", label: "N12", datatype: "integer", editable: true});
+				metadata.push({ name: "n13", label: "N13", datatype: "integer", editable: true});
+				metadata.push({ name: "n14", label: "N14", datatype: "integer", editable: true});
+				metadata.push({ name: "n15", label: "N15", datatype: "integer", editable: true});
+				metadata.push({ name: "n16", label: "N16", datatype: "integer", editable: true});
+				metadata.push({ name: "n17", label: "N17", datatype: "integer", editable: true});
+				metadata.push({ name: "n18", label: "N18", datatype: "integer", editable: true});
+				metadata.push({ name: "n19", label: "N19", datatype: "integer", editable: true});
+				metadata.push({ name: "n20", label: "N20", datatype: "integer", editable: true});
+
+				// a small example of how you can manipulate the object in javascript
+				metadata[4].values = {};
+				metadata[4].values["Europe"] = {"be":"Belgium","fr":"France","uk":"Great-Britain","nl":"Nederland"};
+				metadata[4].values["America"] = {"br":"Brazil","ca":"Canada","us":"USA"};
+				metadata[4].values["Africa"] = {"ng":"Nigeria","za":"South-Africa","zw":"Zimbabwe"};
+
+				var data = [];
+				data.push({id: 1, values: {"country":"uk","age":33,"name":"Duke","firstname":"Patience","height":1.842,"email":"patience.duke@gmail.com","lastvisit":"11\/12\/2002","n1":1,"n2":1,"n3":1,"n4":1,"n5":1,"n6":2,"n7":2,"n8":2,"n9":2,"n10":2,"n11":3,"n12":3,"n13":3,"n14":3,"n15":3,"n16":4,"n17":4,"n18":4,"n19":4,"n20":4}});
+				
+				
+				 for(var f = 2; f<2500; f++){
+					data.push({id: f, values: ["Rogers","Denise",59,1.627,"us","rogers.d@gmail.com","","07\/05\/2003",1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4]});
+				 }
+				 
+				editableGrid = new EditableGrid("DemoGridJsData");
+				editableGrid.load({"metadata": metadata, "data": data});
+				editableGrid.renderGrid("tablecontent", "testgrid");
+			} 
+		</script>
+		
+	</head>
+	
+	<body>
+		<h1>EditableGrid - Minimal Demo - Creating grid in Javascript - <a href="../index.html">Back to menu</a></h1> 
+		<div id="tablecontent"></div>
+	</body>
+
+</html>
